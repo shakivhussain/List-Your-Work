@@ -9,12 +9,12 @@ plugins {
 android {
 
     namespace 'com.shakivhusain.listyourwork'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.shakivhusain.listyourwork"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -51,10 +51,11 @@ dependencies {
     // Dependencies for working with Architecture components
     // You'll probably have to update the version numbers in build.gradle (Project)
 
-    // Room components
-    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
-    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+    // Room components /// Working Room
+    implementation "androidx.room:room-runtime:2.4.3"
+    annotationProcessor "androidx.room:room-compiler:2.4.3"
+    kapt 'androidx.room:room-compiler:2.5.0-beta02'
+    implementation 'androidx.room:room-ktx:2.4.3'
 
     // Lifecycle components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"

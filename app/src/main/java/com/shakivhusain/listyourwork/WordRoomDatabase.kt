@@ -21,6 +21,9 @@ public abstract class WordRoomDatabase : RoomDatabase() {
 
             INSTANCE?.let { db ->
                 scope.launch {
+                    var wordDao = db.wordDao()
+
+                    populateDatabase(wordDao)
 
                 }
             }
@@ -31,9 +34,9 @@ public abstract class WordRoomDatabase : RoomDatabase() {
             wordDao.deleteAll()
 
             // Add Sample Word Here
-            var word = Word(  word = "Hello")
+            var word = Word(word = "Hello")
             wordDao.insert(word)
-            word = Word( "World")
+            word = Word("World")
             wordDao.insert(word)
 
 
@@ -53,7 +56,7 @@ public abstract class WordRoomDatabase : RoomDatabase() {
 
                 val instance = Room.databaseBuilder(
                     context.applicationContext, WordRoomDatabase::class.java, "word_database"
-                ).build()
+                ).addCallback(WordsDatabaseCallback(scope)).build()
                 INSTANCE = instance
                 instance
             }

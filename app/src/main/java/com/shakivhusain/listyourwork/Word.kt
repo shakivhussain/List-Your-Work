@@ -7,7 +7,7 @@ import java.net.IDN
 
 @Entity(tableName = "word_table")
 data class Word(
-//    @PrimaryKey(autoGenerate = true) val idn: Int = 0,
-    @PrimaryKey @ColumnInfo(name = "word") val word: String
+    @PrimaryKey(autoGenerate = true) val idn: Int = 0,
+    @ColumnInfo(name = "word") val word: String
 )
 
